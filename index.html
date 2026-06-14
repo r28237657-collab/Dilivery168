@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEGACY DELIVERY</title>
+    <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKsA...">
+    <!-- Fixed Typography query parser -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="javascript/java.js" defer></script>
+</head>
+<body>
+
+    <nav class="sidebar">
+        <div class="sidebar-brand"><i class="fa-solid fa-bowl-food"></i></div>
+        <div class="sidebar-menu">
+            <button class="sidebar-item active" onclick="switchView('home-view', this)">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </button>
+            <button class="sidebar-item" onclick="switchView('search-view', this)">
+                <i class="fas fa-search"></i>
+                <span>Search</span>
+            </button>
+            <button class="sidebar-item" onclick="switchView('favs-view', this)">
+                <i class="fas fa-heart"></i>
+                <span>Favs</span>
+            </button>
+            <button class="sidebar-item" onclick="switchView('profile-view', this)">
+                <i class="fas fa-user"></i>
+                <span>Profile</span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="dashboard">
+        
+        <div id="home-view" class="app-view active-view">
+            <section class="promo-banner">
+                <div class="banner-text">
+                    <h1><span>50% OFF</span><br>Tasty Food<br>In Your Hand</h1>
+                </div>
+            </section>
+
+            <div class="filter-menu">
+                <button class="filter-chip active" onclick="filterCategory('all', this)">All Dishes</button>
+                <button class="filter-chip" onclick="filterCategory('bestseller', this)">Best Seller</button>
+                <button class="filter-chip" onclick="filterCategory('rated', this)">Top Rated</button>
+            </div>
+
+            <h3 class="section-title" id="grid-title">Recommended For You</h3>
+            
+            <div class="products-grid" id="dishesGrid">
+                </div>
+        </div>
+
+        <div id="search-view" class="app-view">
+            <h3 class="section-title">Search Menu Ecosystem</h3>
+            <div class="search-container">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="globalSearchInput" placeholder="Type dish name (e.g., Pizza, Burger)..." oninput="executeGlobalSearch()">
+                </div>
+            </div>
+            <div class="products-grid" id="searchResultsGrid">
+                <p style="color: var(--text-gray);">Start typing above to search dishes live...</p>
+            </div>
+        </div>
+
+        <div id="favs-view" class="app-view">
+            <h3 class="section-title">Your Favorite Selection</h3>
+            <div class="products-grid" id="favoritesGrid">
+                <div class="placeholder-view">
+                    <i class="fas fa-heart"></i>
+                    <p>No favorite items selected yet.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="profile-view" class="app-view">
+            <h3 class="section-title">Customer Profile</h3>
+            <div class="placeholder-view">
+                <i class="fas fa-user-circle"></i>
+                <h4>Premium Guest Account</h4>
+                <p style="margin-top: 0.5rem;">Delivery Region: Phnom Penh, Chaom Chau</p>
+            </div>
+        </div>
+
+    </main>
+
+    <aside class="cart-sidebar" id="cartSidebar">
+        <h3 class="cart-title">Order Menu</h3>
+        <div class="delivery-address-card">
+            <p>Delivery Address</p>
+            <h4>Phnom Penh, Chaom Chau</h4>
+        </div>
+        <div class="cart-meta-info">
+            <span><i class="fas fa-clock"></i>30 mins</span>
+            <span><i class="fas fa-map-marker-alt"></i>2 Km</span>
+        </div>
+
+        <div class="cart-items-wrapper" id="cartItemsContainer">
+            </div>
+
+        <div class="payout-summary-box">
+            <div class="summary-row"><span>Subtotal</span><span id="subtotalCost">$0.00</span></div>
+            <div class="summary-row"><span>Delivery Fee</span><span id="deliveryCost">$0.00</span></div>
+            <div class="summary-row total"><span>Total Amount</span><span id="totalCost">$0.00</span></div>
+        </div>
+
+        <button class="checkout-btn" id="checkoutBtn" onclick="processPayout()" disabled>Proceed to Checkout</button>
+    </aside>
+
+    <div class="modal-overlay" id="paymentModal">
+        <div class="receipt-modal">
+            <div class="success-icon"><i class="fas fa-check"></i></div>
+            <h2>Order Dispatched!</h2>
+            <p style="color: var(--text-gray); font-size: 0.9rem; margin: 0.5rem 0 1.5rem;">Your professional checkout process completed cleanly. Funds validated safely.</p>
+            <button class="close-modal-btn" onclick="closeModal()">Track Live Courier</button>
+        </div>
+    </div>
+
+   
+</body>
+</html>
